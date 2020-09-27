@@ -36,7 +36,7 @@ function cellClicked () {
 }
 
 function updateBoard() {
-    console.log(cells);
+    //console.log(cells);
     for ( let i=0; i < cells.length; i++) {
         board[i] = cells[i].id;
     }
