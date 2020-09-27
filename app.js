@@ -60,6 +60,7 @@ function resetBoard() {
  *   6  7  8
  ***************/
 function checkBoard() {
+    //console.log(board);
     if(board[0] != "") {                                            // checking from board[0]
         if(board[0] == board[1] && board[0] == board[2]) {          // board[0] Horizontal
             callWinner();
@@ -77,7 +78,8 @@ function checkBoard() {
         } else if(board[6] == board[4] && board[6] == board[2]) {       // board[6] Diagonal
             callWinner();
         }
-    } else if(board[1] != "" && board[1] == board[4] && board[1] == board[7]) {  // board[1] Vertical
+    }
+    if(board[1] != "" && board[1] == board[4] && board[1] == board[7]) {  // board[1] Vertical
         callWinner();
     } else if(board[2] != "" && board[2] == board[5] && board[2] == board[8]) { // board[2] Vertical
         callWinner();
