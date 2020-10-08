@@ -32,6 +32,7 @@ let game = {
             cell.id = "";    
             cell.innerHTML = "";
         }
+        document.getElementById("winner").innerText = "";
     }
 };
 
@@ -48,7 +49,7 @@ function cellClicked(e) {
     // used innerHTML even though you adviced against it
     // its my understanding that the way I used it doesn't 
     // allow users to inject malicious code, correct me if I'm wrong
-]   e.target.innerHTML = `<img src='${game.currentPlayer}img.png'>`;
+   e.target.innerHTML = `<img src='${game.currentPlayer}img.png'>`;
     game.playCount++;
 
     checkWinner();
@@ -61,11 +62,13 @@ function checkWinner() {
         const [a, b, c] = combo;
         if(cells[a].id === game.currentPlayer && cells[b].id === game.currentPlayer && cells[c].id === game.currentPlayer) {
             console.log(`${game.currentPlayer} Wins!`);
+            document.getElementById("winner").innerText = `Player ${game.currentPlayer} Wins!`;
             game.isOver = true;
         }
     }
     if(game.playCount === 9 && !game.isOver) {
         console.log("Draw!");
+        document.getElementById("winner").innerText = `Game is a Draw!`;
         game.isOver = true;
     }
 }
