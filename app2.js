@@ -3,6 +3,7 @@
  * 3 4 5
  * 6 7 8
  */
+
 const combos = [
     [0, 1, 2],
     [0, 3, 6],
@@ -27,7 +28,10 @@ let game = {
         this.currentPlayer = "X";
         this.playCount = 0;
         this.isOver = false;
-        for(const cell of cells) cell.textContent = "";    
+        for(const cell of cells){ 
+            cell.id = "";    
+            cell.innerHTML = "";
+        }
     }
 };
 
@@ -38,9 +42,13 @@ function cellClicked(e) {
         game.reset();
         return;
     }
-    if(e.target.textContent !== "") return;
+    if(e.target.id !== "") return;
 
-    e.target.textContent = game.currentPlayer;
+    e.target.id = game.currentPlayer;
+    // used innerHTML even though you adviced against it
+    // its my understanding that the way I used it doesn't 
+    // allow users to inject malicious code, correct me if I'm wrong
+]   e.target.innerHTML = `<img src='${game.currentPlayer}img.png'>`;
     game.playCount++;
 
     checkWinner();
@@ -51,7 +59,7 @@ function cellClicked(e) {
 function checkWinner() {
     for(const combo of combos) {
         const [a, b, c] = combo;
-        if(cells[a].textContent === game.currentPlayer && cells[b].textContent === game.currentPlayer && cells[c].textContent === game.currentPlayer) {
+        if(cells[a].id === game.currentPlayer && cells[b].id === game.currentPlayer && cells[c].id === game.currentPlayer) {
             console.log(`${game.currentPlayer} Wins!`);
             game.isOver = true;
         }
