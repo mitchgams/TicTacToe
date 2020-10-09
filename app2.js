@@ -49,7 +49,7 @@ function cellClicked(e) {
     // used innerHTML even though you adviced against it
     // its my understanding that the way I used it doesn't 
     // allow users to inject malicious code, correct me if I'm wrong
-   e.target.innerHTML = `<img src='${game.currentPlayer}img.png'>`;
+   e.target.innerHTML = `<img src='${game.currentPlayer}img.png' id='${game.currentPlayer}'>`;
     game.playCount++;
 
     checkWinner();
